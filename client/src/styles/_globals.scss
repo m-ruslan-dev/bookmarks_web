@@ -1,0 +1,61 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap"); // Roboto
+
+// Variables
+$roboto: "Roboto", sans-serif;
+$secondary: hsl(209, 10%, 53%);
+$main: hsl(214deg, 85%, 38%);
+$active: hsl(214deg, 85%, 55%);
+
+// Mixins
+@mixin add_flex($jc: center, $ai: center) {
+  display: flex;
+  justify-content: $jc;
+  align-items: $ai;
+}
+
+// General
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f4eeff;
+  color: #212427;
+  font-family: $roboto;
+}
+
+a {
+  text-decoration: none;
+  outline: none;
+  color: inherit;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  padding: 20px 5%;
+}
+
+.input-text {
+  width: 100%;
+  padding: 0.5rem 0.4rem;
+  font-size: 1rem;
+  font-family: inherit;
+  font-weight: 300;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  transition: all ease 0.3s;
+  &:focus {
+    border: 1px solid hsl(214deg, 85%, 38%);
+  }
+}

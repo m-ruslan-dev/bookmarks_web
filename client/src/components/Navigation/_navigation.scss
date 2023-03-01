@@ -1,0 +1,45 @@
+@use "../../styles/globals" as *;
+
+.nav {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  min-height: 300px;
+  &__user {
+    span {
+      font-weight: 300;
+      font-size: 1.1rem;
+      font-style: italic;
+    }
+  }
+
+  h2 {
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__link {
+    display: block;
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 0.3rem 0;
+    width: 100%;
+    transition: all ease-in 0.2s;
+    &:hover {
+      color: hsl(212, 85%, 56%);
+      transform: translateX(10px);
+    }
+  }
+  &__list {
+    width: 100%;
+  }
+  hr {
+    border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 0.8rem 0;
+  }
+}

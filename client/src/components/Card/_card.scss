@@ -1,0 +1,62 @@
+@use "../../styles/globals" as *;
+
+.card {
+  @include add_flex;
+  background-color: #fff;
+  width: 100%;
+  border-radius: 10px;
+  margin: 0.7rem 0;
+  padding-right: 0.8rem;
+
+  // Image
+  &__img {
+    border-radius: 10px 0 0 10px;
+    width: 100px;
+    height: 100%;
+    img {
+      border-radius: inherit;
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+
+  // Body
+  &__body {
+    width: 100%;
+    padding: 0 0.5rem;
+    padding: 0.5rem;
+  }
+  &__title {
+    font-size: 1.1rem;
+    margin: 0.4rem 0;
+  }
+  &__url {
+    font-size: 14px;
+  }
+  &__date {
+    font-size: 14px;
+    color: $secondary;
+  }
+
+  // Delete button
+  &__delete {
+    @include add_flex;
+    flex-shrink: 0;
+    background: none;
+    border: 1px solid $main;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    margin: 1.2rem;
+    font-size: 1.2rem;
+    transition: all ease-in 0.2s;
+    &:hover {
+      background-color: hsl(354, 70%, 54%);
+      border: none;
+      color: #fff;
+    }
+  }
+}
