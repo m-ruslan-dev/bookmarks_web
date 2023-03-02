@@ -14,7 +14,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "bookmarks")
+@Table(name = "bookmark")
 @Getter
 @Setter
 public class Bookmark {
@@ -24,6 +24,7 @@ public class Bookmark {
     private String link;
     private String collection;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
