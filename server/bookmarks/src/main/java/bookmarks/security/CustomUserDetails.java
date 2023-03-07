@@ -5,15 +5,20 @@ import java.util.Collection;
 import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
+import bookmarks.interfaces.ICustomUserDetails;
 import bookmarks.models.User;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class CustomUserDetails implements UserDetails {
+public class CustomUserDetails implements ICustomUserDetails {
 
     private final User user;
+
+    @Override
+    public Long getId() {
+        return user.getId();
+    }
 
     @Override
     public String getUsername() {
