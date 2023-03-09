@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
+
+import bookmarks.exceptions.UserIsNotLoggedInException;
 import bookmarks.models.Bookmark;
 import bookmarks.services.AuthenticationStatusService;
 import bookmarks.services.BookmarkService;
@@ -24,12 +26,19 @@ public class BookmarkController {
 
     @GetMapping("/get")
     public ResponseEntity<List<Bookmark>> getBookmarksForUser() {
-        if (authenticationStatusService.isUserLoggedIn()) {
-            Long userId = currentUserService.getUserId();
-            List<Bookmark> bookmarks = bookmarkService.getBookmarksForUser(userId);
-            return ResponseEntity.ok(bookmarks);
-        } else {
+        try {
+            // If user is logged in - proceed and retrieve bookmarks
+            if (authenticationStatusService.isUserLoggedIn()) {
+                Long userId = currentUserService.getUserId();
+                List<Bookmark> bookmarks = bookmarkService.getBookmarksForUser(userId);
+                return ResponseEntity.ok(bookmarks);
+            }
+        } catch (UserIsNotLoggedInException e) {
+            // If user is not logged in, the exception is thrown and handled
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
+        // If user is logged in, but an unexpected error occured and bookmarks were not
+        // returned
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 }

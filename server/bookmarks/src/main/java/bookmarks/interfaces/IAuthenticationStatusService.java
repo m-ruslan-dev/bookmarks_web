@@ -1,5 +1,7 @@
 package bookmarks.interfaces;
 
+import bookmarks.exceptions.UserIsNotLoggedInException;
+
 public interface IAuthenticationStatusService {
-    public Boolean isUserLoggedIn();
+    public Boolean isUserLoggedIn() throws UserIsNotLoggedInException;
 }
