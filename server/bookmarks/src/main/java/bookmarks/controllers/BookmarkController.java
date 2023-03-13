@@ -5,12 +5,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import bookmarks.exceptions.UserIsNotLoggedInException;
+import bookmarks.DTO.BookmarkId;
 import bookmarks.exceptions.BookmarkNotFoundException;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -48,8 +49,9 @@ public class BookmarkController {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteBookmark(@PathVariable Long id) throws Exception {
+    @DeleteMapping
+    public ResponseEntity<?> deleteBookmark(@RequestBody BookmarkId bookmarkId) throws Exception {
+        Long id = bookmarkId.getId();
         try {
             // Check if user with such id exists, delete the bookmark
             bookmarkService.doesBookmarkByIdExist(id); // throws BookmarkNotFoundException
