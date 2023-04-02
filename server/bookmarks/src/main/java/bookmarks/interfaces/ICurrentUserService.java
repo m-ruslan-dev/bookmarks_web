@@ -1,5 +1,9 @@
 package bookmarks.interfaces;
 
+import bookmarks.models.User;
+
 public interface ICurrentUserService {
-    Long getUserId();
+    public Long getUserId();
+
+    public User getUser();
 }
