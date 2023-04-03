@@ -1,11 +1,14 @@
 package bookmarks.builders;
 
+import org.springframework.stereotype.Component;
+
 import bookmarks.exceptions.EmptyFieldsException;
 import bookmarks.interfaces.IBookmarkBuilder;
 
 import bookmarks.models.Bookmark;
 import bookmarks.models.User;
 
+@Component
 public class bookmarkBuilder implements IBookmarkBuilder {
 
     Bookmark bookmark = new Bookmark();
