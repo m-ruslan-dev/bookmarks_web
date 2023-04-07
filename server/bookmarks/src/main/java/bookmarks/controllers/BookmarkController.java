@@ -74,9 +74,9 @@ public class BookmarkController {
         } catch (UserIsNotLoggedInException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         } catch (UserNotFoundException e) {
-            // If the ID has been retrieved, the user is considered logged in. An invalid ID
-            // suggests that the issue lies within the code itself and that the ID may have
-            // been lost or corrupted on this way to the controller
+            // If the user ID has been retrieved, the user is considered logged in. An
+            // invalid ID suggests that the issue lies within the code itself and that the
+            // ID may have been lost or corrupted on its way to the controller
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,
                     "An issue with the code has occurred while retrieving user information.");
         } catch (EmptyFieldsException e) {
