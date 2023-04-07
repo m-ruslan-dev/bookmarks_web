@@ -5,11 +5,5 @@ import bookmarks.models.Bookmark;
 import bookmarks.models.User;
 
 public interface IBookmarkBuilder {
-    public void buildLink(String link);
-
-    public void buildCollection(String collection);
-
-    public void buildUser(User user);
-
-    public Bookmark getBookmark() throws EmptyFieldsException;
+    public Bookmark buildBookmark(User user, String link, String collection) throws EmptyFieldsException;
 }

@@ -59,12 +59,16 @@ public class BookmarkController {
     @PostMapping
     public ResponseEntity<?> createBookmark(@RequestBody BookmarkInputDTO bookmarkInputDTO) {
         try {
+            // Get logged user entity
             Long loggedUserId = loggedUserService.getUserId();
             User user = userService.getUserById(loggedUserId);
-            bookmarkBuilder.buildUser(user);
-            bookmarkBuilder.buildLink(bookmarkInputDTO.getLink());
-            bookmarkBuilder.buildCollection(bookmarkInputDTO.getCollection());
-            Bookmark bookmark = bookmarkBuilder.getBookmark();
+
+            // Create new bookmark entity object
+            String link = bookmarkInputDTO.getLink();
+            String collection = bookmarkInputDTO.getCollection();
+            Bookmark bookmark = bookmarkBuilder.buildBookmark(user, link, collection);
+
+            // Try to save the bookmark
             bookmarkService.saveBookmark(bookmark);
             return ResponseEntity.ok().build();
         } catch (UserIsNotLoggedInException e) {

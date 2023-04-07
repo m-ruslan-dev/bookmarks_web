@@ -10,25 +10,15 @@ import bookmarks.models.User;
 
 @Component
 public class bookmarkBuilder implements IBookmarkBuilder {
-
     Bookmark bookmark = new Bookmark();
 
-    public void buildLink(String link) {
-        bookmark.setLink(link);
-    }
-
-    public void buildCollection(String collection) {
-        bookmark.setCollection(collection);
-    }
-
-    public void buildUser(User user) {
-        bookmark.setUser(user);
-    }
-
-    public Bookmark getBookmark() throws EmptyFieldsException {
-        if (bookmark.getLink() == null || bookmark.getCollection() == null || bookmark.getUser() == null) {
-            throw new EmptyFieldsException("Cannot create bookmark with empty fields");
+    public Bookmark buildBookmark(User user, String link, String collection) throws EmptyFieldsException {
+        if (user == null || link == null || collection == null) {
+            throw new EmptyFieldsException("Cannot create bookmark with empty fields.");
         } else {
+            bookmark.setUser(user);
+            bookmark.setLink(link);
+            bookmark.setCollection(collection);
             return bookmark;
         }
     }
