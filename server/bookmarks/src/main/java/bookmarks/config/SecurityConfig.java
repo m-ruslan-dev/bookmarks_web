@@ -15,6 +15,7 @@ public class SecurityConfig {
     public SecurityFilterChain configuration(HttpSecurity http) throws Exception {
         return http
                 .csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
+                .cors(Customizer.withDefaults())
                 .httpBasic(Customizer.withDefaults())
                 .build();
     }
