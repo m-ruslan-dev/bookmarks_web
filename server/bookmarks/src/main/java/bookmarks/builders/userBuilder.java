@@ -7,8 +7,8 @@ import bookmarks.interfaces.IUserBuilder;
 import bookmarks.models.User;
 
 @Component
-public class userBuilder implements IUserBuilder {
-    User user = new User();
+public class UserBuilder implements IUserBuilder {
+    private User user = new User();
 
     public User buildUser(String username, String password, String email) throws EmptyFieldsException {
         if (username == null || password == null || email == null) {

@@ -15,7 +15,7 @@ import bookmarks.exceptions.UserIsNotLoggedInException;
 import bookmarks.exceptions.UserNotFoundException;
 import bookmarks.DTO.BookmarkId;
 import bookmarks.DTO.BookmarkInputDTO;
-import bookmarks.builders.bookmarkBuilder;
+import bookmarks.builders.BookmarkBuilder;
 import bookmarks.exceptions.BookmarkNotFoundException;
 import bookmarks.exceptions.EmptyFieldsException;
 
@@ -40,7 +40,7 @@ public class BookmarkController {
     @Autowired
     AuthenticationStatusService authenticationStatusService;
     @Autowired
-    bookmarkBuilder bookmarkBuilder;
+    BookmarkBuilder bookmarkBuilder;
 
     @GetMapping()
     public ResponseEntity<List<Bookmark>> getBookmarksForUser() {

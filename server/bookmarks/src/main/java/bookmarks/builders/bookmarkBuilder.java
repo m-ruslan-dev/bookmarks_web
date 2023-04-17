@@ -9,7 +9,7 @@ import bookmarks.models.Bookmark;
 import bookmarks.models.User;
 
 @Component
-public class bookmarkBuilder implements IBookmarkBuilder {
+public class BookmarkBuilder implements IBookmarkBuilder {
     Bookmark bookmark = new Bookmark();
 
     public Bookmark buildBookmark(User user, String link, String collection) throws EmptyFieldsException {
