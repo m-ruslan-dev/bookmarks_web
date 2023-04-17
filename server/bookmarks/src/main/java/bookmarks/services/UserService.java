@@ -18,4 +18,8 @@ public class UserService {
         Optional<User> user = userRepository.findById(id);
         return user.orElseThrow(() -> new UserNotFoundException("Could not find user with id: " + id));
     }
+
+    public void saveUser(User user) {
+        userRepository.save(user);
+    }
 }
