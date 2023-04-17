@@ -12,7 +12,10 @@ import org.springframework.web.server.ResponseStatusException;
 import bookmarks.DTO.UserDTO;
 import bookmarks.builders.UserBuilder;
 import bookmarks.exceptions.EmptyFieldsException;
+import bookmarks.exceptions.RoleNotFoundException;
+import bookmarks.models.Role;
 import bookmarks.models.User;
+import bookmarks.services.RoleService;
 import bookmarks.services.UserService;
 
 @RestController
@@ -23,6 +26,8 @@ public class UserController {
     PasswordEncoder passwordEncoder;
     @Autowired
     UserService userService;
+    @Autowired
+    RoleService roleService;
 
     @PostMapping("/registration")
     public ResponseEntity<?> registerUser(@RequestBody UserDTO userDTO) {
@@ -34,13 +39,16 @@ public class UserController {
             // Build user entity
             final String username = userDTO.getUsername();
             final String email = userDTO.getEmail();
-            final User user = userBuilder.buildUser(username, encodedPassword, email);
+            final Role role = roleService.getRoleByName("user");
+            final User user = userBuilder.buildUser(username, encodedPassword, email, role);
 
             // Add user to the database
             userService.saveUser(user);
 
             return ResponseEntity.ok().build();
         } catch (EmptyFieldsException e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
+        } catch (RoleNotFoundException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
         }
     }
