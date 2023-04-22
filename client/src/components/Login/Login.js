@@ -11,21 +11,21 @@ const Login = () => {
 
       <form className="login__form">
         {/* Username field */}
-        <label for="username">Username</label>
+        <label for="login-username">Username</label>
         <input
           type="text"
           className="login__username"
-          name="username"
-          id="username"
+          name="login-username"
+          id="login-username"
         ></input>
 
         {/* Password field */}
-        <label for="password">Password</label>
+        <label for="login-password">Password</label>
         <input
           type="password"
           className="login__password"
-          name="password"
-          id="password"
+          name="login-password"
+          id="login-password"
         ></input>
 
         <button type="submit" className="login__submit-btn">
