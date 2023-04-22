@@ -1,0 +1,7 @@
+@use "../../styles/globals" as *;
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 20px;
+}

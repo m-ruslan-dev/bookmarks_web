@@ -2,7 +2,5 @@
 @use "./styles/globals" as *;
 
 .app {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-  gap: 20px;
+  width: 100%;
 }
