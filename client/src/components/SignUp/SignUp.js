@@ -16,7 +16,7 @@ const SignUp = () => {
         </label>
         <input
           type="text"
-          classname="sign-up__username input-text"
+          className="sign-up__username input-text"
           name="sign-up-username"
           id="sign-up-username"
         ></input>
@@ -27,7 +27,7 @@ const SignUp = () => {
         </label>
         <input
           type="email"
-          classname="sign-up__email input-text"
+          className="sign-up__email input-text"
           name="sign-up-email"
           id="sign-up-email"
         ></input>
@@ -38,7 +38,7 @@ const SignUp = () => {
         </label>
         <input
           type="password"
-          classname="sign-up__password input-text"
+          className="sign-up__password input-text"
           name="sign-up-password"
           id="sign-up-password"
         ></input>

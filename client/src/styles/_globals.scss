@@ -22,7 +22,7 @@ $active: hsl(214deg, 85%, 55%);
 }
 
 body {
-  background-color: #f4eeff;
+  background-color: #f1eff7;
   color: #212427;
   font-family: $roboto;
 }
@@ -46,6 +46,7 @@ button {
 }
 
 .label-text {
+  display: inline-block;
   align-self: flex-start;
   font-weight: 500;
   font-size: 17px;
@@ -75,6 +76,9 @@ button {
   border: none;
   border-radius: 10px;
   font-size: 17px;
+  &:hover {
+    background-color: $active;
+  }
 }
 
 .cancel-btn {
