@@ -11,24 +11,28 @@ const Login = () => {
 
       <form className="login__form">
         {/* Username field */}
-        <label for="login-username">Username</label>
+        <label className="label-text" for="login-username">
+          Username
+        </label>
         <input
           type="text"
-          className="login__username"
+          className="login__username input-text"
           name="login-username"
           id="login-username"
         ></input>
 
         {/* Password field */}
-        <label for="login-password">Password</label>
+        <label className="label-text" for="login-password">
+          Password
+        </label>
         <input
           type="password"
-          className="login__password"
+          className="login__password input-text"
           name="login-password"
           id="login-password"
         ></input>
 
-        <button type="submit" className="login__submit-btn">
+        <button type="submit" className="login__submit-btn submit-btn">
           Log in
         </button>
       </form>

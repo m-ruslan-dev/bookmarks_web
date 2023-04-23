@@ -11,34 +11,42 @@ const SignUp = () => {
 
       <form className="sign-up__form">
         {/* Username field */}
-        <label for="sign-up-username">Username</label>
+        <label className="label-text" for="sign-up-username">
+          Username
+        </label>
         <input
           type="text"
-          classname="sign-up__username"
+          classname="sign-up__username input-text"
           name="sign-up-username"
           id="sign-up-username"
         ></input>
 
         {/* Email field */}
-        <label for="sign-up-email">Email</label>
+        <label className="label-text" for="sign-up-email">
+          Email
+        </label>
         <input
           type="email"
-          classname="sign-up__email"
+          classname="sign-up__email input-text"
           name="sign-up-email"
           id="sign-up-email"
         ></input>
 
         {/* Password field */}
-        <label for="sign-up-password">Password</label>
+        <label className="label-text" for="sign-up-password">
+          Password
+        </label>
         <input
           type="password"
-          classname="sign-up__password"
+          classname="sign-up__password input-text"
           name="sign-up-password"
           id="sign-up-password"
         ></input>
 
         {/* Submit */}
-        <button type="submit">Sign up</button>
+        <button className="sign-up__submit submit-btn" type="submit">
+          Sign up
+        </button>
       </form>
 
       {/* Link to login page */}

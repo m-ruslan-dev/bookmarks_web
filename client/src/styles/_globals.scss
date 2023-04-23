@@ -45,6 +45,13 @@ button {
   padding: 20px 5%;
 }
 
+.label-text {
+  align-self: flex-start;
+  font-weight: 500;
+  font-size: 17px;
+  margin-bottom: 0.5rem;
+}
+
 .input-text {
   width: 100%;
   padding: 0.5rem 0.4rem;
@@ -57,5 +64,28 @@ button {
   transition: all ease 0.3s;
   &:focus {
     border: 1px solid hsl(214deg, 85%, 38%);
+  }
+}
+
+.submit-btn {
+  padding: 0.6rem 1rem;
+  background-color: $main;
+  font-family: inherit;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 17px;
+}
+
+.cancel-btn {
+  border: none;
+  padding: 0.6rem 1rem;
+  font-size: 17px;
+  font-family: inherit;
+  font-weight: 400;
+  background-color: transparent;
+  color: $secondary;
+  &:hover {
+    color: hsl(0, 66%, 58%);
   }
 }
