@@ -11,7 +11,7 @@ let App = () => {
       <>
         <Routes>
           <Route path="/" element={<Dashboard />} />
-          <Route path="/auth" element={<Authentication />} />
+          <Route path="/auth/:formType" element={<Authentication />} />
         </Routes>
       </>
     </BrowserRouter>
