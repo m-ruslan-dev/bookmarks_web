@@ -14,6 +14,15 @@ public class SecurityConfig {
         return http
                 .csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
                 .cors(Customizer.withDefaults())
+                // Requests authorization
+                .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/login").permitAll()
+                        .anyRequest().authenticated())
+                // Login page config
+                .formLogin(form -> form
+                        .loginPage("http://localhost:9000/auth/login")
+                        .loginProcessingUrl("/login")
+                        .defaultSuccessUrl("http://localhost:9000/"))
                 .httpBasic(Customizer.withDefaults())
                 .build();
     }
