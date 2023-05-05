@@ -1,5 +1,38 @@
 import React from "react";
 
+const handleSubmit = async (event) => {
+  event.preventDefault();
+
+  // Get data from form fields
+  const formData = new FormData(event.target);
+  const username = formData.get("login-username");
+  const password = formData.get("login-password");
+
+  // Create URL encoded object
+  const userCredentials = new URLSearchParams({ username, password });
+
+  // Send user credentials
+  try {
+    const response = await fetch("http://localhost:8080/login", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: userCredentials,
+    });
+    if (response.status === 200) {
+      console.log("success");
+    } else {
+      let error = new Error();
+      error.message = "Something went wrong";
+      console.error(error);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const Login = () => {
   return (
     <section className="login">
@@ -9,7 +42,7 @@ const Login = () => {
         <p>Your bookmarks are just a login away</p>
       </div>
 
-      <form className="login__form">
+      <form className="login__form" onSubmit={(event) => handleSubmit(event)}>
         {/* Username field */}
         <label className="label-text" for="login-username">
           Username
