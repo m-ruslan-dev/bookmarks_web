@@ -11,7 +11,7 @@ const useGetBookmarks = (url) => {
     const fetchBookmarks = async () => {
       try {
         // Get bookmarks
-        const response = await fetch(url);
+        const response = await fetch(url, { credentials: "include" });
         const bookmarks = await response.json();
 
         // Change state
