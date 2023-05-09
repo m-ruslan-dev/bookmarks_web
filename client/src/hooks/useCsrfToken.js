@@ -1,30 +1,46 @@
-import { useEffect } from "react";
-import { useCookies } from "react-cookie";
+import { useEffect, useState } from "react";
+
+const getCsrfTokenFromCookies = () => {
+  const cookiesString = document.cookie;
+  const cookiesArray = cookiesString.split("; ");
+
+  // Find the XSRF-TOKEN cookie
+  const xsrfCookie = cookiesArray.find((cookie) =>
+    cookie.startsWith("XSRF-TOKEN=")
+  );
+
+  // If "XSRF-TOKEN" is defined, return its value
+  if (xsrfCookie) {
+    const token = xsrfCookie.split("=")[1];
+    return token;
+  } else {
+    return null;
+  }
+};
 
 const useCsrfToken = () => {
-  const [cookies, setCookies] = useCookies(["XSRF-TOKEN"]);
+  const [csrfToken, setCsrfToken] = useState(getCsrfTokenFromCookies()); // Get CSRF token from cookies
 
   useEffect(() => {
-    // Check if token is present in the cookies
-    // If not, fetch the token and update the "cookies" object
-    if (!cookies["XSRF-TOKEN"]) {
+    // If CSRF token is not defined in the cookies, request one from server
+    if (!csrfToken) {
       const getToken = async () => {
         try {
+          // The response is setting up a "XSRF-TOKEN" cookie
           await fetch("http://localhost:8080/csrf", {
             credentials: "include",
           });
 
-          setCookies(); // Forces rerender to update "cookies" object according to browser's cookies
+          // Set new token from the cookies
+          setCsrfToken(getCsrfTokenFromCookies());
         } catch (error) {
           console.error(error);
         }
       };
-
       getToken();
     }
   }, []);
 
-  const csrfToken = cookies["XSRF-TOKEN"];
   return csrfToken;
 };
 
