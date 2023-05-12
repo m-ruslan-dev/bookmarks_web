@@ -21,7 +21,7 @@ const Login = () => {
         onSubmit={(event) => handleSubmit(event, csrfToken, navigate)}
       >
         {/* Username field */}
-        <label className="label-text" for="login-username">
+        <label className="label-text" htmlFor="login-username">
           Username
         </label>
         <input
@@ -32,7 +32,7 @@ const Login = () => {
         ></input>
 
         {/* Password field */}
-        <label className="label-text" for="login-password">
+        <label className="label-text" htmlFor="login-password">
           Password
         </label>
         <input
