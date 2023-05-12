@@ -1,5 +1,9 @@
 package bookmarks.models;
 
+import java.time.LocalDate;
+
+import org.hibernate.annotations.CreationTimestamp;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
@@ -11,6 +15,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,10 +30,17 @@ public class Bookmark {
     private Long id;
 
     @NotEmpty
+    @Size(max = 120)
+    private String title;
+
+    @NotEmpty
     private String link;
 
     @NotEmpty
     private String collection;
+
+    @CreationTimestamp
+    private LocalDate created;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
