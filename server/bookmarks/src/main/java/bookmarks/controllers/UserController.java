@@ -29,7 +29,7 @@ public class UserController {
     @Autowired
     RoleService roleService;
 
-    @PostMapping("/registration")
+    @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody UserDTO userDTO) {
         try {
             // Encode password
@@ -51,5 +51,5 @@ public class UserController {
         } catch (RoleNotFoundException e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
         }
-    }
+    };
 }
