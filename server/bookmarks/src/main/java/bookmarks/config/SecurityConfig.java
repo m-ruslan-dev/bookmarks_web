@@ -27,6 +27,7 @@ public class SecurityConfig {
                                 // Requests authorization
                                 .authorizeHttpRequests(authorize -> authorize
                                                 .requestMatchers("/login").permitAll()
+                                                .requestMatchers("/user/register").permitAll()
                                                 .requestMatchers("/csrf").permitAll()
                                                 .anyRequest().authenticated())
                                 // Login page config
