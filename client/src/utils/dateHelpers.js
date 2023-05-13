@@ -17,7 +17,7 @@ export const getMonthName = (monthNumber) => {
 };
 
 // Function accepts string with date in format "yyyy-mm-dd"
-export const extractYearMonthDay = (dateString) => {
+export const extractYearMonthDate = (dateString) => {
   // Separate year, month, day
   const dateArray = dateString.split("-");
   const year = dateArray[0];
