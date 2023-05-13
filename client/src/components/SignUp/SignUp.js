@@ -1,6 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
+import useCsrfToken from "../../hooks/useCsrfToken";
+import signUpHandler from "./signUpHandler";
 
 const SignUp = () => {
+  const csrfToken = useCsrfToken();
+  const navigate = useNavigate();
+
   return (
     <section className="sign-up">
       {/* Text info */}
@@ -9,7 +16,10 @@ const SignUp = () => {
         <p>Create an account to start saving your favorite bookmarks</p>
       </div>
 
-      <form className="sign-up__form">
+      <form
+        className="sign-up__form"
+        onSubmit={(event) => signUpHandler(event, csrfToken, navigate)}
+      >
         {/* Username field */}
         <label className="label-text" for="sign-up-username">
           Username
