@@ -7,8 +7,10 @@ const Bookmarks = () => {
   const bookmarks = fetchStatus.bookmarks;
   return (
     <section className="bookmarks">
-      {bookmarks.map((item, index) => {
-        return <Card />;
+      {bookmarks.map((bookmark) => {
+        return (
+          <Card title={bookmark.title} link={bookmark.link} key={bookmark.id} />
+        );
       })}
     </section>
   );
