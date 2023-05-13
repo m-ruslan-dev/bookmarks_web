@@ -9,7 +9,12 @@ const Bookmarks = () => {
     <section className="bookmarks">
       {bookmarks.map((bookmark) => {
         return (
-          <Card title={bookmark.title} link={bookmark.link} key={bookmark.id} />
+          <Card
+            title={bookmark.title}
+            link={bookmark.link}
+            creationDate={bookmark.created}
+            key={bookmark.id}
+          />
         );
       })}
     </section>
