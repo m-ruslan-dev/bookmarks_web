@@ -35,4 +35,13 @@ public class LoggedUserService implements ILoggedUserService {
             throw new UserIsNotLoggedInException("User is not logged in");
         }
     };
+
+    public String getUsername() throws UserIsNotLoggedInException {
+        if (authenticationStatusService.isUserLoggedIn()) {
+            CustomUserDetails principal = getPrincipal(CustomUserDetails.class);
+            return principal.getUsername();
+        } else {
+            throw new UserIsNotLoggedInException("User is not logged in");
+        }
+    };
 }
