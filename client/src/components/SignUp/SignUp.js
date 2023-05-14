@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import useCsrfToken from "../../hooks/useCsrfToken";
 import signUpHandler from "./signUpHandler";
@@ -61,7 +61,7 @@ const SignUp = () => {
 
       {/* Link to login page */}
       <p className="sign-up__login-link">
-        Alreade have an account? <a href="#">Log in</a>
+        Alreade have an account? <Link to="/auth/login">Log in</Link>
       </p>
     </section>
   );
