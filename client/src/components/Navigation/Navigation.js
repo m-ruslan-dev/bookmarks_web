@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UsernameContext } from "../../contexts/UsernameContext";
 
 const Navigation = () => {
-  let user = "Username";
-  let collections = ["All", "example"];
+  const username = useContext(UsernameContext);
+  let collections = ["All", "Example 1", "Example 2", "Example 3"];
+
   return (
     <nav className="nav">
       {/* User section */}
@@ -10,7 +12,7 @@ const Navigation = () => {
         <h2>
           <span>Greetings,</span>
           <br />
-          {`${user}`}
+          {`${username}`}
         </h2>
       </div>
       <hr />
@@ -19,7 +21,7 @@ const Navigation = () => {
       <ul className="nav__list">
         {collections.map((item, index) => {
           return (
-            <li className="nav__item" id={index}>
+            <li className="nav__item" key={index}>
               <a href="#" className="nav__link">
                 {item}
               </a>
