@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Card from "../Card/Card";
-import useGetBookmarks from "../../hooks/useGetBookmarks";
+import { BookmarksContext } from "../../contexts/BookmarksContext";
 
 const Bookmarks = () => {
-  const fetchStatus = useGetBookmarks("http://localhost:8080/bookmarks");
-  const bookmarks = fetchStatus.bookmarks;
+  const { bookmarksFetchStatus } = useContext(BookmarksContext);
+  const bookmarks = bookmarksFetchStatus.bookmarks;
   return (
     <section className="bookmarks">
       {bookmarks.map((bookmark) => {
