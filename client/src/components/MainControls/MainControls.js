@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
+
+// Components
 import Searchbar from "../Searchbar/Searchbar";
 
+// Contexts
+import { BookmarksContext } from "../../contexts/BookmarksContext";
+
 const MainControls = ({ setModalOpen }) => {
-  let counter = 0;
+  // Get bookmarks from the BookmarksContext
+  const { bookmarksFetchStatus } = useContext(BookmarksContext);
+  // Get the number of bookmarks in the array
+  const bookmarksCount = bookmarksFetchStatus.bookmarks.length;
   return (
     <div className="controls">
       <h3 className="controls__counter">
-        Bookmarks: <span>({`${counter}`})</span>
+        Bookmarks: <span>({`${bookmarksCount}`})</span>
       </h3>
       <Searchbar />
       <div className="controls__menu">
