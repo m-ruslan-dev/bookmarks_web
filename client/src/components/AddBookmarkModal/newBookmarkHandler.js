@@ -1,4 +1,8 @@
-export const newBookmarkHandler = async (event, csrfToken) => {
+export const newBookmarkHandler = async (
+  event,
+  csrfToken,
+  refreshBookmarks
+) => {
   event.preventDefault();
 
   // Get input values
@@ -23,6 +27,8 @@ export const newBookmarkHandler = async (event, csrfToken) => {
       },
       body: JSON.stringify(bookmarkData),
     });
+
+    refreshBookmarks();
   } catch (error) {
     console.log(error);
   }

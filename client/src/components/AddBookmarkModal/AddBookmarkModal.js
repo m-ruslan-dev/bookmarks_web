@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
+
+// Context
+import { BookmarksContext } from "../../contexts/BookmarksContext";
+
+// Hooks
 import useCsrfToken from "../../hooks/useCsrfToken";
 
+// Functions
 import { newBookmarkHandler } from "./newBookmarkHandler";
 
+// Renders a form for submitting new bookmarks to the server
+// Invokes newBookmarkHandler on form submission and refreshes bookmarks
 const AddBookmarkModal = ({ setModalOpen }) => {
   const csrfToken = useCsrfToken();
+  const { refreshBookmarks } = useContext(BookmarksContext);
+
   return (
     <div className="modal">
       <div className="modal__overlay"></div>
       <form
         className="modal__container"
-        onSubmit={(event) => newBookmarkHandler(event, csrfToken)}
+        onSubmit={(event) =>
+          newBookmarkHandler(event, csrfToken, refreshBookmarks)
+        }
       >
         <h2 className="modal__heading">New Bookmark</h2>
 
