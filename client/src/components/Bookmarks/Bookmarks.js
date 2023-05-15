@@ -13,6 +13,7 @@ const Bookmarks = () => {
             title={bookmark.title}
             link={bookmark.link}
             creationDate={bookmark.created}
+            bookmarkId={bookmark.id}
             key={bookmark.id}
           />
         );
