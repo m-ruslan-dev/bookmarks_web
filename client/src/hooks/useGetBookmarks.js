@@ -1,10 +1,16 @@
 import { useState, useEffect } from "react";
 
+// Fetches bookmarks
+// Provides bookmarks loading status
+// Provides refresh function
 const useGetBookmarks = (url) => {
-  const [fetchStatus, setFetchStatus] = useState({
+  // Initialize bookmarksFetchStatus object
+  const [bookmarksFetchStatus, setBookmarksFetchStatus] = useState({
     bookmarks: [],
     isLoading: true,
   });
+  // Initialize trigger for rerendering
+  const [trigger, setTrigger] = useState(false);
 
   useEffect(() => {
     // Define the request
@@ -20,7 +26,7 @@ const useGetBookmarks = (url) => {
         const bookmarks = await response.json();
 
         // Change state
-        setFetchStatus({
+        setBookmarksFetchStatus({
           bookmarks,
           isLoading: false,
         });
@@ -29,11 +35,16 @@ const useGetBookmarks = (url) => {
       }
     };
 
-    // Invoke the request
     fetchBookmarks();
-  }, [url]);
+  }, [trigger]);
 
-  return fetchStatus;
+  const refreshBookmarks = () => {
+    // Set the opposite of value of trigger to change state
+    // State change invokes the useEffect()
+    setTrigger(!trigger);
+  };
+
+  return { bookmarksFetchStatus, refreshBookmarks };
 };
 
 export default useGetBookmarks;
