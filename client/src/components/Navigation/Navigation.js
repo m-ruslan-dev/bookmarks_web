@@ -1,5 +1,10 @@
 import React, { useContext } from "react";
+
+// Contexts
 import { UsernameContext } from "../../contexts/UsernameContext";
+
+// Icons
+import { RiLogoutBoxLine } from "react-icons/ri";
 
 const Navigation = () => {
   const username = useContext(UsernameContext);
@@ -28,6 +33,17 @@ const Navigation = () => {
             </li>
           );
         })}
+      </ul>
+
+      {/* Account Actions */}
+      <hr />
+      <ul className="nav__list">
+        <li className="nav__item">
+          <a href="#" className="nav__link">
+            <RiLogoutBoxLine className="nav__icon" />
+            Log Out
+          </a>
+        </li>
       </ul>
     </nav>
   );
