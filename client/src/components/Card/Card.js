@@ -24,6 +24,7 @@ const Card = ({ title, link, bookmarkId, description, creationDate }) => {
           <h4 className="card__title">{title}</h4>
           <div className="card__buttons">
             <button
+              title="Delete"
               type="button"
               className="card__delete"
               onClick={(event) =>
