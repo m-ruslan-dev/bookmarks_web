@@ -20,9 +20,10 @@ const AddBookmarkModal = ({ setModalOpen }) => {
       <div className="modal__overlay"></div>
       <form
         className="modal__container"
-        onSubmit={(event) =>
-          newBookmarkHandler(event, csrfToken, refreshBookmarks)
-        }
+        onSubmit={(event) => {
+          newBookmarkHandler(event, csrfToken, refreshBookmarks);
+          setModalOpen(false);
+        }}
       >
         <h2 className="modal__heading">New Bookmark</h2>
 
@@ -40,7 +41,12 @@ const AddBookmarkModal = ({ setModalOpen }) => {
         <label className="label-text" htmlFor="bookmark_description">
           Description
         </label>
-        <textarea rows="2" id="bookmark_description" className="input-text input-text__textarea" name="bookmark_description"></textarea>
+        <textarea
+          rows="2"
+          id="bookmark_description"
+          className="input-text input-text__textarea"
+          name="bookmark_description"
+        ></textarea>
 
         <label className="label-text" htmlFor="bookmark_link">
           Link
