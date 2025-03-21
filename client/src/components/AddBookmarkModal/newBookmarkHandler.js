@@ -8,11 +8,13 @@ export const newBookmarkHandler = async (
   // Get input values
   const formData = new FormData(event.target);
   const title = formData.get("bookmark_title");
+  const description = formData.get("bookmark_description")
   const link = formData.get("bookmark_link");
   const collection = formData.get("new_collection");
 
   const bookmarkData = {
     title,
+    description,
     link,
     collection,
   };
