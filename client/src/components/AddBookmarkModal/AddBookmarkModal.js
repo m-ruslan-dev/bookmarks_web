@@ -37,6 +37,11 @@ const AddBookmarkModal = ({ setModalOpen }) => {
           name="bookmark_title"
         ></input>
 
+        <label className="label-text" htmlFor="bookmark_description">
+          Description
+        </label>
+        <textarea rows="2" id="bookmark_description" className="input-text input-text__textarea" name="bookmark_description"></textarea>
+
         <label className="label-text" htmlFor="bookmark_link">
           Link
         </label>
