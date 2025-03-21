@@ -11,6 +11,7 @@ const Bookmarks = () => {
         return (
           <Card
             title={bookmark.title}
+            description={bookmark.description}
             link={bookmark.link}
             creationDate={bookmark.created}
             bookmarkId={bookmark.id}

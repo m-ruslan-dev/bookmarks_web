@@ -37,6 +37,9 @@ public class Bookmark {
     private String link;
 
     @NotEmpty
+    private String description;
+
+    @NotEmpty
     private String collection;
 
     @CreationTimestamp

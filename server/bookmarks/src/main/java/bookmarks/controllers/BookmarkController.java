@@ -65,9 +65,10 @@ public class BookmarkController {
 
             // Get new bookmark entity object from builder
             String title = bookmarkInputDTO.getTitle();
+            String description = bookmarkInputDTO.getDescription();
             String link = bookmarkInputDTO.getLink();
             String collection = bookmarkInputDTO.getCollection();
-            Bookmark bookmark = bookmarkBuilder.buildBookmark(user, title, link, collection);
+            Bookmark bookmark = bookmarkBuilder.buildBookmark(user, title, description, link, collection);
 
             // Try to save the bookmark
             bookmarkService.saveBookmark(bookmark);

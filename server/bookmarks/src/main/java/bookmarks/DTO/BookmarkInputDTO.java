@@ -7,6 +7,7 @@ import lombok.Setter;
 @Setter
 public class BookmarkInputDTO {
     private String title;
+    private String description;
     private String link;
     private String collection;
 }
