@@ -37,7 +37,7 @@ public class WebsiteMetadataService {
         String html = fetchMetadata(url);
         Document doc = Jsoup.parse(html);
         String title = doc.title();
-        Element iconLinkElement = doc.selectFirst("link[rel~=(?i)icon]");
+        Element iconLinkElement = doc.selectFirst("link[rel~=(?i)icon]"); // look for the first <link> element with rel attribute containing "icon" string
         String iconUrl = (iconLinkElement != null) ? url + iconLinkElement.attr("href") : null; // Return an icon URL or null
 
         metadata.setTitle(title);
