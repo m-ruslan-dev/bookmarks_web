@@ -5,7 +5,6 @@ import bookmarks.DTO.LLMMessagesDTO;
 import bookmarks.DTO.LLMRequestDTO;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
@@ -56,7 +55,7 @@ public class LLMService {
     }
 
     // Method is responsible for getting the bookmark description and category
-    public BookmarkPrefillDTO generateBookmarkPrefill(BookmarkPrefillDTO bookmarkPrefillDTO, String url) {
+    public BookmarkPrefillDTO generateBookmarkPrefill(String url, BookmarkPrefillDTO bookmarkPrefillDTO) {
         LLMRequestDTO llmRequestDTO = new LLMRequestDTO();
 
         // Construct a JSON object with LLM messages
