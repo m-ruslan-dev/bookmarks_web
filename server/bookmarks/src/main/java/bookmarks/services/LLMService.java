@@ -20,7 +20,7 @@ import java.util.List;
 public class LLMService {
     String llm_url = "https://api.mistral.ai/v1/chat/completions";
 
-    private String performApiCall(String url, LLMRequestDTO llmRequestDTO) {
+    public String performApiCall(String url, LLMRequestDTO llmRequestDTO) {
         String API_key = "";
         WebClient client = WebClient
                 .builder()
@@ -38,7 +38,7 @@ public class LLMService {
                 .bodyToMono(String.class)
                 .block();
     };
-    private String getLLMResponseMessage(String llmResponseJson) {
+    public String getLLMResponseMessage(String llmResponseJson) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode rootNode = objectMapper.readTree(llmResponseJson);
