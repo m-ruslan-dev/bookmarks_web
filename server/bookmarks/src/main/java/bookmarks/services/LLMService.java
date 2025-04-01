@@ -8,10 +8,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
+import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
+import reactor.netty.http.client.HttpClient;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,13 +24,16 @@ public class LLMService {
 
     public String performApiCall(String url, LLMRequestDTO llmRequestDTO) {
         String API_key = "";
-        WebClient client = WebClient
+        HttpClient httpClient = HttpClient.create()
+                .responseTimeout(Duration.ofSeconds(20));
+        WebClient webClient = WebClient
                 .builder()
+                .clientConnector(new ReactorClientHttpConnector(httpClient))
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .defaultHeader(HttpHeaders.AUTHORIZATION, "Bearer " + API_key)
                 .build();
 
-        return client
+        return webClient
                 .post()
                 .uri(url)
                 .bodyValue(llmRequestDTO)
@@ -83,8 +89,9 @@ public class LLMService {
         return bookmarkPrefillDTO;
     }
 
-    private String getBookmarkPrefillDescription(String llmResponseMessage) {
+    private String getBookmarkPrefillDescription(String llmResponse) {
         try {
+            String llmResponseMessage = getLLMResponseMessage(llmResponse);
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode rootNode = objectMapper.readTree(llmResponseMessage);
             return rootNode.path("description").asText();
@@ -92,8 +99,9 @@ public class LLMService {
             throw new RuntimeException("Failed to parse LLM response message", e);
         }
     }
-    private String getBookmarkPrefillCategory(String llmResponseMessage) {
+    private String getBookmarkPrefillCategory(String llmResponse) {
         try {
+            String llmResponseMessage = getLLMResponseMessage(llmResponse);
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode rootNode = objectMapper.readTree(llmResponseMessage);
             return rootNode.path("category").asText();

@@ -16,7 +16,7 @@ public class BookmarkPrefillService {
         // Populate the DTO with webpage title and icon
         bookmarkPrefillDTO = (BookmarkPrefillDTO) websiteMetadataService.getMetadata(url, bookmarkPrefillDTO);
         // Populate the DTO with description and category
-        bookmarkPrefillDTO = (BookmarkPrefillDTO) llmService.generateBookmarkPrefill(url, bookmarkPrefillDTO);
+        bookmarkPrefillDTO = llmService.generateBookmarkPrefill(url, bookmarkPrefillDTO);
 
         return bookmarkPrefillDTO;
     }
