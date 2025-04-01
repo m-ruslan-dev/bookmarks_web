@@ -1,21 +1,22 @@
 package bookmarks.controllers;
 
-import bookmarks.exceptions.UserIsNotLoggedInException;
-import bookmarks.models.Bookmark;
-import org.springframework.http.HttpStatus;
+import bookmarks.DTO.BookmarkPrefillDTO;
+import bookmarks.DTO.BookmarkPrefillRequestDTO;
+import bookmarks.services.BookmarkPrefillService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("prefill-bookmark")
+@RequestMapping("/bookmark-prefill")
 public class BookmarkPrefillController {
+    @Autowired
+    BookmarkPrefillService bookmarkPrefillService;
 
-    @GetMapping()
-    public String getPrefill() {
-        return "Hello";
+    @PostMapping
+    public ResponseEntity<?> createBookmark(@RequestBody BookmarkPrefillRequestDTO bookmarkPrefillRequestDTO) {
+        String url = bookmarkPrefillRequestDTO.getUrl();
+        BookmarkPrefillDTO bookmarkPrefillDTO = bookmarkPrefillService.getBookmarkPrefill(url);
+        return ResponseEntity.ok(bookmarkPrefillDTO);
     }
 }
