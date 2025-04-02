@@ -1,0 +1,19 @@
+export const prefillBookmarkHandler = async (url, csrfToken) => {
+  try {
+    const response = await fetch("http://localhost:8080/bookmark-prefill", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        "X-XSRF-TOKEN": csrfToken,
+      },
+      body: JSON.stringify({ url }),
+    });
+    if (!response.ok) {
+      throw new Error("Failed to prefill bookmark data");
+    }
+    return await response.json();
+  } catch (error) {
+    throw error;
+  }
+};
