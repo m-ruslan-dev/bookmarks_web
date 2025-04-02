@@ -14,7 +14,7 @@ public class BookmarkPrefillController {
     BookmarkPrefillService bookmarkPrefillService;
 
     @PostMapping
-    public ResponseEntity<?> createBookmark(@RequestBody BookmarkPrefillRequestDTO bookmarkPrefillRequestDTO) {
+    public ResponseEntity<?> getBookmarkPrefill(@RequestBody BookmarkPrefillRequestDTO bookmarkPrefillRequestDTO) {
         String url = bookmarkPrefillRequestDTO.getUrl();
         BookmarkPrefillDTO bookmarkPrefillDTO = bookmarkPrefillService.getBookmarkPrefill(url);
         return ResponseEntity.ok(bookmarkPrefillDTO);
