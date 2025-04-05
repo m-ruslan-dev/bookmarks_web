@@ -21,8 +21,8 @@ import bookmarks.exceptions.EmptyFieldsException;
 
 import org.springframework.web.server.ResponseStatusException;
 
-import bookmarks.models.Bookmark;
-import bookmarks.models.User;
+import bookmarks.mysql.models.Bookmark;
+import bookmarks.mysql.models.User;
 import bookmarks.services.AuthenticationStatusService;
 import bookmarks.services.BookmarkService;
 import bookmarks.services.LoggedUserService;

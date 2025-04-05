@@ -1,8 +1,8 @@
-package bookmarks.repositories;
+package bookmarks.mysql.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
-import bookmarks.models.Bookmark;
+import bookmarks.mysql.models.Bookmark;
 
 public interface BookmarkRepository extends JpaRepository<Bookmark, Long> {
 

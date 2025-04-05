@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 
 import bookmarks.interfaces.ICustomUserDetails;
-import bookmarks.models.User;
+import bookmarks.mysql.models.User;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor

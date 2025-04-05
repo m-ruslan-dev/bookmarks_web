@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import bookmarks.exceptions.RoleNotFoundException;
-import bookmarks.models.Role;
-import bookmarks.repositories.RoleRepository;
+import bookmarks.mysql.models.Role;
+import bookmarks.mysql.repositories.RoleRepository;
 
 @Service
 public class RoleService {

@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import bookmarks.exceptions.UserNotFoundException;
-import bookmarks.models.User;
-import bookmarks.repositories.UserRepository;
+import bookmarks.mysql.models.User;
+import bookmarks.mysql.repositories.UserRepository;
 
 @Service
 public class UserService {

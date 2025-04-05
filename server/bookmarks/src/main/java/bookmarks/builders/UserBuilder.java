@@ -4,8 +4,8 @@ import org.springframework.stereotype.Component;
 
 import bookmarks.exceptions.EmptyFieldsException;
 import bookmarks.interfaces.IUserBuilder;
-import bookmarks.models.Role;
-import bookmarks.models.User;
+import bookmarks.mysql.models.Role;
+import bookmarks.mysql.models.User;
 
 @Component
 public class UserBuilder implements IUserBuilder {

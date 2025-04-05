@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component;
 import bookmarks.exceptions.EmptyFieldsException;
 import bookmarks.interfaces.IBookmarkBuilder;
 
-import bookmarks.models.Bookmark;
-import bookmarks.models.User;
+import bookmarks.mysql.models.Bookmark;
+import bookmarks.mysql.models.User;
 
 @Component
 public class BookmarkBuilder implements IBookmarkBuilder {

@@ -2,8 +2,8 @@ package bookmarks.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import bookmarks.repositories.BookmarkRepository;
-import bookmarks.models.Bookmark;
+import bookmarks.mysql.repositories.BookmarkRepository;
+import bookmarks.mysql.models.Bookmark;
 import bookmarks.exceptions.BookmarkNotFoundException;
 
 import java.util.List;

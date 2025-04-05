@@ -1,4 +1,4 @@
-package bookmarks.models;
+package bookmarks.mysql.models;
 
 import java.time.LocalDate;
 
