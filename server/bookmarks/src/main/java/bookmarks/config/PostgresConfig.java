@@ -35,7 +35,9 @@ public class PostgresConfig {
     @Bean(name = "postgresJpaProperties")
     @ConfigurationProperties(prefix = "postgres.jpa.properties")
     public Map<String, String> postgresJpaProperties() {
-        return new HashMap<>();
+        Map<String, String> properties = new HashMap<>();
+        properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+        return properties;
     }
 
     @Bean(name = "postgresEntityManagerFactory")
